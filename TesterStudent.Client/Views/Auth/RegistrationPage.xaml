@@ -1,0 +1,67 @@
+﻿<Page x:Class="TesterStudent.Client.Views.Auth.RegistrationPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TesterStudent.Client.Views.Auth"
+      xmlns:validationrules="clr-namespace:TesterStudent.Client.ValidationRules"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Регистрация нового аккаунта" x:Name="regPage">
+
+    <ScrollViewer>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="30" />
+            </Grid.RowDefinitions>
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <Label Foreground="red" HorizontalContentAlignment="Center" Content="{Binding Result.Message}"></Label>
+                <Label Grid.Row="1">Логин</Label>
+                <TextBox VerticalContentAlignment="Center" Style="{StaticResource ValidateTextBox}" FontSize="18" Grid.Row="2" MaxWidth="200" Height="35">
+                    <TextBox.Text>
+
+                        <Binding Path="Username" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <validationrules:RequiredLengthValidationRule RequiredLength="6" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <Label Grid.Row="3">Пароль</Label>
+                <TextBox VerticalContentAlignment="Center" Style="{StaticResource ValidateTextBox}" FontSize="18" Grid.Row="4" MaxWidth="200" Height="35">
+                    <TextBox.Text>
+                        <Binding Path="Password" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <validationrules:RequiredLengthValidationRule RequiredLength="6" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <Label Grid.Row="5">Фамилия</Label>
+                <TextBox VerticalContentAlignment="Center" FontSize="18" Grid.Row="6" Text="{Binding Lastname, UpdateSourceTrigger=PropertyChanged}" MaxWidth="200" Height="35"></TextBox>
+                <Label Grid.Row="7">Имя</Label>
+                <TextBox VerticalContentAlignment="Center" FontSize="18" Grid.Row="8" Text="{Binding Firstname, UpdateSourceTrigger=PropertyChanged}" MaxWidth="200" Height="35"></TextBox>
+                <Button Grid.Row="9" Margin="0, 4, 0, 0" Command="{Binding Register}" VerticalContentAlignment="Center" IsDefault="True"  MaxWidth="400" Height="35">Зарегистрироваться</Button>
+
+            </Grid>
+            <TextBlock Grid.Row="1" FontSize="18" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,10">
+            <Hyperlink Command="{Binding Login}" CommandParameter="{Binding ElementName=regPage}">Войти</Hyperlink>
+            </TextBlock>
+        </Grid>
+    </ScrollViewer>
+</Page>

@@ -1,0 +1,38 @@
+﻿<Page x:Class="TesterStudent.Client.Views.Auth.LoginPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TesterStudent.Client.Views.Auth"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Авторизация" x:Name="loginPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <Label Foreground="red" HorizontalContentAlignment="Center" Content="{Binding Result.Message}"></Label>
+            <Label Grid.Row="1">Логин</Label>
+            <TextBox VerticalContentAlignment="Center" FontSize="18" Grid.Row="2" Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" MinWidth="200" MaxWidth="400" Height="50"></TextBox>
+            <Label Grid.Row="3">Пароль</Label>
+            <TextBox VerticalContentAlignment="Center" FontSize="18" Grid.Row="4" Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}" MinWidth="200" MaxWidth="400" Height="50"></TextBox>
+            <Button Grid.Row="5" Margin="0, 10, 0, 0" Command="{Binding Login}" IsDefault="True"  MaxWidth="400" Height="50">Войти</Button>
+
+        </Grid>
+        <TextBlock Grid.Row="1" FontSize="18" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,20">
+            <Hyperlink Command="{Binding Register}" CommandParameter="{Binding ElementName=loginPage}">Зарегистрироваться</Hyperlink>
+        </TextBlock>
+    </Grid>
+</Page>
